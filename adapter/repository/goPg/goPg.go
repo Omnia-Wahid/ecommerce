@@ -23,7 +23,8 @@ func (thisDB *DatabaseGoPg) InitAdapter() {
 		Password: config.RepositoryPassword,
 		Database: config.RepositoryDatabaseName,
 	})
-	thisDB.pgConnection.AddQueryHook(dbLogger{})
+	//to print queries uncomment this line
+	//thisDB.pgConnection.AddQueryHook(dbLogger{})
 	thisDB.IProductStockCrudsPort = &ProductStockCruds{Database: thisDB.pgConnection}
 	thisDB.IProductCrudsPort = &ProductCruds{Database: thisDB.pgConnection}
 }

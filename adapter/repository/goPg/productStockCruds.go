@@ -31,7 +31,7 @@ func (thisPS *ProductStockCruds) GetStockChange(sku string, country string) (*mo
 	productStockModel := &model.ProductStock{
 		Country:     productStockEntity.Country,
 		Sku:         productStockEntity.Sku,
-		StockChange: productStockEntity.StockChange,
+		StockChange: &productStockEntity.StockChange,
 	}
 	return productStockModel, nil
 }

@@ -19,7 +19,7 @@ func prepareProductStockList(data [][]string) []*model.ProductStock {
 				Country:     line[0],
 				Sku:         line[1],
 				Name:        line[2],
-				StockChange: change,
+				StockChange: &change,
 			}
 
 			productStockList = append(productStockList, rec)

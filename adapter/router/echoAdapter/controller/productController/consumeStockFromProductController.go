@@ -18,6 +18,12 @@ func consumeStockFromProduct(router *echo.Echo, domainPort domainPort.IProductDo
 				"message": "invalid data",
 			})
 		}
+		validateErr := consumeStockModel.ValidateConsumeStock()
+		if validateErr != nil {
+			return c.JSON(http.StatusBadRequest, map[string]interface{}{
+				"message": validateErr.Error(),
+			})
+		}
 		err = domainPort.ConsumeStockFromProduct(sku, consumeStockModel.ConsumedAmount, consumeStockModel.Country)
 		if err != nil {
 			log.Println("consume stock from product error====> ", err)
