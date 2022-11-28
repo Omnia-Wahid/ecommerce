@@ -1,0 +1,16 @@
+create table products(
+sku char(50) primary key not null,
+	name char(250) not null
+);
+CREATE TABLE public.product_stocks
+(
+    sku char(50) NOT NULL,
+    country char(50) NOT NULL,
+    stock_change integer NOT NULL,
+    CONSTRAINT stock_unique UNIQUE (sku, country),
+    CONSTRAINT sku_fk FOREIGN KEY (sku)
+        REFERENCES public.product (sku) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+        NOT VALID
+);
